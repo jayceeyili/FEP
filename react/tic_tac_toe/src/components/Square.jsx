@@ -7,8 +7,6 @@ export default class Square extends Component {
     this.state = {
       value: null
     }
-
-    this.getValue = this.getValue.bind(this);
   }
 
   getValue() {
@@ -21,7 +19,7 @@ export default class Square extends Component {
     return (
       <button
         className="square"
-        onClick={ this.getValue }
+        onClick={ () => this.getValue() }
       >{ this.state.value }
       </button>
     );
