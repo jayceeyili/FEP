@@ -6,7 +6,8 @@ export default class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null)
+      squares: Array(9).fill(null),
+      xIsNext: true
     }
   }
 
@@ -19,14 +20,16 @@ export default class Board extends Component {
 
   handleClick(i) {
     let squares = this.state.squares.slice();
-    squares[i] = 'X';
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
-      squares: squares
+      squares: squares,
+      xIsNext: !this.state.xIsNext
     })
   }
 
   render() {
-    const status = 'Next player: X';
+    let next = this.state.xIsNext ? 'X' : 'O';
+    const status = `Next player: ${next}`;
 
     return (
       <div>
