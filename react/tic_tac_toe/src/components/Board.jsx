@@ -18,10 +18,11 @@ export default class Board extends Component {
   }
 
   handleClick(i) {
-    // this.setState({
-    //   squares:
-    // })
-    console.log(i);
+    let squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({
+      squares: squares
+    })
   }
 
   render() {

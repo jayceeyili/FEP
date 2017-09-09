@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import '../styles/Square.css';
 
 export default class Square extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null
-    }
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     value: null
+  //   }
+  // }
 
-  getValue() {
-    this.setState({
-      value: 'X'
-    })
-  }
+  // getValue() {
+  //   this.setState({
+  //     value: 'X'
+  //   })
+  // }
 
   render() {
     return (
