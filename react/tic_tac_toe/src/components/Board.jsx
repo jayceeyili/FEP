@@ -17,11 +17,12 @@ export default class Board extends Component {
       />;
   }
 
-  // handleClick(value) {
-  //   this.setState({
-  //     squares:
-  //   })
-  // }
+  handleClick(i) {
+    // this.setState({
+    //   squares:
+    // })
+    console.log(i);
+  }
 
   render() {
     const status = 'Next player: X';
