@@ -18,7 +18,7 @@ import '../styles/Square.css';
 const Square = props => (
   <button
     className="square"
-    onClick={ () => props.onClick() }
+    onClick={ props.onClick }
   >{ props.value }
   </button>
 );
