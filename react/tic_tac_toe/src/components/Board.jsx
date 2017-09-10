@@ -21,6 +21,10 @@ export default class Board extends Component {
 
   handleClick(i) {
     let squares = this.state.squares.slice();
+    // ignore the click if someone has already won the game or
+    // if a square is already filled
+    if (calculateWinner(this.state.squares) || squares[i]) return;
+
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       squares: squares,
