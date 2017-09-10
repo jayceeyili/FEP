@@ -5,9 +5,10 @@ const Info = props => (
   <div className="game-info">
     <div>{ props.status }</div>
     <ol>
-      { props.history.map((step, i) => <MoveEntry
-        key={ i }
-        onClick={ (i) => props.onClick(i) }
+      { props.history.map((step, move) => <MoveEntry
+        key={ move }
+        move={ move }
+        onClick={ props.onClick }
         />
       )}
     </ol>
