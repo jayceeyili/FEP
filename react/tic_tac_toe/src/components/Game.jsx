@@ -1,5 +1,6 @@
 import Board from './Board.jsx';
 import React, { Component } from 'react';
+import Info from './Info.jsx';
 import calculateWinner from '../utils/calculateWinner';
 import '../styles/Game.css';
 
@@ -35,10 +36,11 @@ export default class Game extends Component {
   }
 
   jumpTo(i) {
-    this.setState({
-      stepNumber: i,
-      xIsNext: i % 2 === 0
-    })
+    // this.setState({
+    //   stepNumber: i,
+    //   xIsNext: i % 2 === 0
+    // })
+    console.log(i);
   }
 
   render() {
@@ -48,19 +50,19 @@ export default class Game extends Component {
     let next = this.state.xIsNext ? 'X' : 'O';
     const status = winner ? `Winner: ${winner}` : `Next player: ${next}`;
 
-    const moves = history.map((step, i) => {
-      const desc = i ? `Move #${i}` : 'Game Start';
-      return (
-        <li key={ i }>
-          <a
-            href="#"
-            onClick={ () => this.jumpTo(i) }
-          >
-            { desc }
-          </a>
-        </li>
-      )
-    });
+    // const moves = history.map((step, i) => {
+    //   const desc = i ? `Move #${i}` : 'Game Start';
+    //   return (
+    //     <li key={ i }>
+    //       <a
+    //         href="#"
+    //         onClick={ () => this.jumpTo(i) }
+    //       >
+    //         { desc }
+    //       </a>
+    //     </li>
+    //   )
+    // });
 
     return (
       <div className="game">
@@ -70,10 +72,11 @@ export default class Game extends Component {
             onClick={ (x) => this.handleClick(x) }
           />
         </div>
-        <div className="game-info">
-          <div>{ status }</div>
-          <ol>{ moves }</ol>
-        </div>
+        <Info
+          history={ history }
+          status={ status }
+          onClick={ (i) => this.jumpTo(i) }
+        />
       </div>
     );
   }
