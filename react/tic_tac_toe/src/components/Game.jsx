@@ -16,7 +16,20 @@ export default class Game extends Component {
   }
 
   handleClick(i) {
-    console.log(i);
+    let history = this.state.history;
+    let current = history[history.length - 1];
+    let winner = calculateWinner(current.squares);
+    let squares = current.squares.slice();
+
+    if (winner || squares[i]) return;
+
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      history: this.state.history.concat([{
+        squares: squares
+      }]),
+      xIsNext: !this.state.xIsNext
+    })
   }
 
   render() {
@@ -31,7 +44,7 @@ export default class Game extends Component {
         <div className="game-board">
           <Board
             squares={ current.squares }
-            onClick={ this.handleClick }
+            onClick={ (i) => this.handleClick(i) }
           />
         </div>
         <div className="game-info">

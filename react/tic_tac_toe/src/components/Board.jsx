@@ -1,6 +1,5 @@
 import Square from './Square.jsx';
 import React, { Component } from 'react';
-import calculateWinner from '../utils/calculateWinner';
 import '../styles/Board.css';
 
 export default class Board extends Component {
@@ -19,18 +18,18 @@ export default class Board extends Component {
       />;
   }
 
-  handleClick(i) {
-    let squares = this.state.squares.slice();
-    // ignore the click if someone has already won the game or
-    // if a square is already filled
-    if (calculateWinner(this.state.squares) || squares[i]) return;
-
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext
-    })
-  }
+  // handleClick(i) {
+  //   let squares = this.state.squares.slice();
+  //   // ignore the click if someone has already won the game or
+  //   // if a square is already filled
+  //   if (calculateWinner(this.state.squares) || squares[i]) return;
+  //
+  //   squares[i] = this.state.xIsNext ? 'X' : 'O';
+  //   this.setState({
+  //     squares: squares,
+  //     xIsNext: !this.state.xIsNext
+  //   })
+  // }
 
   render() {
     return (
