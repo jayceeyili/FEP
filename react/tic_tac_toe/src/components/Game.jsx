@@ -25,9 +25,9 @@ export default class Game extends Component {
 
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
-      history: this.state.history.concat([{
+      history: [...this.state.history, ...[{
         squares: squares
-      }]),
+      }]],
       xIsNext: !this.state.xIsNext
     })
   }
