@@ -2,11 +2,11 @@ import Square from './Square.jsx';
 import React from 'react';
 import '../styles/Board.css';
 
-const Board = props => {
+const Board = ({ squares, onClick }) => {
   const renderSquare = i => {
     return <Square
-      value={ props.squares[i] }
-      onClick={ () => props.onClick(i) }
+      value={ squares[i] }
+      onClick={ () => onClick(i) }
       />;
   }
 
