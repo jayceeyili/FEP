@@ -3,33 +3,12 @@ import React, { Component } from 'react';
 import '../styles/Board.css';
 
 export default class Board extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true
-    }
-  }
-
   renderSquare(i) {
     return <Square
-      value={ this.state.squares[i] }
+      value={ this.props.squares[i] }
       onClick={ () => this.props.onClick(i) }
       />;
   }
-
-  // handleClick(i) {
-  //   let squares = this.state.squares.slice();
-  //   // ignore the click if someone has already won the game or
-  //   // if a square is already filled
-  //   if (calculateWinner(this.state.squares) || squares[i]) return;
-  //
-  //   squares[i] = this.state.xIsNext ? 'X' : 'O';
-  //   this.setState({
-  //     squares: squares,
-  //     xIsNext: !this.state.xIsNext
-  //   })
-  // }
 
   render() {
     return (
