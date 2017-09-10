@@ -1,5 +1,6 @@
 import Board from './Board.jsx';
 import React, { Component } from 'react';
+import calculateWinner from '../utils/calculateWinner';
 import '../styles/Game.css';
 
 export default class Game extends Component {
@@ -19,16 +20,22 @@ export default class Game extends Component {
   }
 
   render() {
+    let history = this.state.history;
+    let current = history[history.length - 1];
+    let winner = calculateWinner(current.squares);
+    let next = this.state.xIsNext ? 'X' : 'O';
+    const status = winner ? `Winner: ${winner}` : `Next player: ${next}`;
+
     return (
       <div className="game">
         <div className="game-board">
           <Board
-            state={ this.state }
+            squares={ current.squares }
             onClick={ this.handleClick }
           />
         </div>
         <div className="game-info">
-          <div>{ }</div>
+          <div>{ status }</div>
           <ol>{/* TODO */}</ol>
         </div>
       </div>
