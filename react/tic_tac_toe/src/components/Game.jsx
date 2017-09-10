@@ -14,14 +14,21 @@ export default class Game extends Component {
     }
   }
 
+  handleClick(i) {
+    console.log(i);
+  }
+
   render() {
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board
+            state={ this.state }
+            onClick={ this.handleClick }
+          />
         </div>
         <div className="game-info">
-          <div>{ this.state.status }</div>
+          <div>{ }</div>
           <ol>{/* TODO */}</ol>
         </div>
       </div>
