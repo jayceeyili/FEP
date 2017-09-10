@@ -9,4 +9,16 @@ const rules = [
   [2, 4, 6]
 ];
 
-const calculateWinner =
+const calculateWinner = squares => {
+  for (let i = 0; i < rules.length; i++) {
+    let [a, b, c] = rules[i];
+
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+
+  return null;
+};
+
+export default calculateWinner;
