@@ -33,13 +33,8 @@ export default class Board extends Component {
   }
 
   render() {
-    let next = this.state.xIsNext ? 'X' : 'O';
-    let winner = calculateWinner(this.state.squares);
-    const status = winner ? `Winner: ${winner}` : `Next player: ${next}`;
-
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
