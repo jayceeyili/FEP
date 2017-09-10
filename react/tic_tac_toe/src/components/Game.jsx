@@ -7,7 +7,10 @@ export default class Game extends Component {
     super(props);
 
     this.state = {
-      status: 'ueee'
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true
     }
   }
 
