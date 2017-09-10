@@ -36,11 +36,10 @@ export default class Game extends Component {
   }
 
   jumpTo(i) {
-    // this.setState({
-    //   stepNumber: i,
-    //   xIsNext: i % 2 === 0
-    // })
-    console.log(i);
+    this.setState({
+      stepNumber: i,
+      xIsNext: i % 2 === 0
+    })
   }
 
   render() {
@@ -49,20 +48,6 @@ export default class Game extends Component {
     let winner = calculateWinner(current.squares);
     let next = this.state.xIsNext ? 'X' : 'O';
     const status = winner ? `Winner: ${winner}` : `Next player: ${next}`;
-
-    // const moves = history.map((step, i) => {
-    //   const desc = i ? `Move #${i}` : 'Game Start';
-    //   return (
-    //     <li key={ i }>
-    //       <a
-    //         href="#"
-    //         onClick={ () => this.jumpTo(i) }
-    //       >
-    //         { desc }
-    //       </a>
-    //     </li>
-    //   )
-    // });
 
     return (
       <div className="game">
