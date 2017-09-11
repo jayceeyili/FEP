@@ -1,15 +1,5 @@
 import React, { Component } from 'react';
 
-// const Calendar = props => {
-//
-//   return (
-//     <div>
-//       This is the Calendar
-//     </div>
-//   )
-// };
-//
-// export default Calendar;
 export default class Calendar extends Component {
   constructor(props) {
     super(props);
