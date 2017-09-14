@@ -1,3 +1,141 @@
-div {
-  font-size: 50px;
+body {
+  color: #404040;
+  font: 100 1em/150% "proxima-nova", Helvetica, sans-serif;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.img-placeholder {
+  background-image: url("http://placehold.it/200x100/CC99CC/ffffff&text=Feature");
+  background-size: cover;
+  min-height: 100px;
+  min-width: 100px;
+}
+
+/*Basic Grid Styles*/
+.Grid {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+.u-textCenter {
+  text-align: center;
+}
+
+.Grid-cell {
+  flex: 1;
+}
+
+.Demo {
+  padding: .8em 1em 0;
+  margin-bottom: 1em;
+  background: rgba(51, 153, 204, 0.2);
+  transition: background-color 0.3s ease;
+  border: 1px solid #33cccc;
+  border-radius: 3px;
+}
+.Demo:after {
+  content: "";
+  display: block;
+  margin-top: .8em;
+  height: 1px;
+}
+.Demo:hover {
+  background: rgba(51, 153, 204, 0.6);
+}
+
+.Demo.Holly {
+  background: rgba(102, 51, 255, 0.1);
+}
+.Demo.Holly:hover {
+  background: rgba(102, 51, 255, 0.25);
+}
+
+/* With gutters*/
+.Grid--gutters {
+  margin-left: -1em;
+}
+.Grid--gutters .Grid-cell {
+  padding-left: 1em;
+}
+.Grid--gutters .Grid--nested .Grid-cell:first-of-type .Demo {
+  margin-right: 1em;
+}
+
+/* Justify per row*/
+.Grid--right {
+  justify-content: flex-end;
+}
+
+.Grid--center {
+  justify-content: center;
+}
+
+/* Alignment per row */
+.Grid--top {
+  align-items: flex-start;
+}
+
+.Grid--bottom {
+  align-items: flex-end;
+}
+
+.Grid--center {
+  align-items: center;
+}
+
+/* Alignment per cell */
+.Grid-cell--top {
+  align-self: flex-start;
+}
+
+.Grid-cell--bottom {
+  align-self: flex-end;
+}
+
+.Grid-cell--center {
+  align-self: center;
+}
+
+/*===========================================*/
+/* Base classes for all media - Mobile first */
+.Grid--cols-4 > .Grid-cell {
+  flex: 0 0 100%;
+}
+/* One of -- columns*/
+.Grid--1of4 > .Grid-cell:first-of-type {
+  flex: 0 0 25%;
+}
+
+/* Tablet (medium) screens */
+@media (min-width: 30em) {
+  .Grid--cols-4 > .Grid-cell {
+    flex: 0 0 calc(50% - 1em);
+  }
+
+  .Grid--1of4 > .Grid-cell:first-of-type {
+    flex: 0 0 50%;
+  }
+}
+/* Large screens */
+@media (min-width: 48em) {
+  .Grid--cols-4 > .Grid-cell {
+    flex: 1;
+  }
+
+  .Grid--1of4 > .Grid-cell:first-of-type {
+    flex: 0 0 25%;
+  }
+
+  .Grid--gutters.Grid--nested .Grid-cell:first-of-type .Demo {
+    margin-right: 0;
+  }
+}
+
+.content-1of4::before {
+  content: "1/4";
 }
