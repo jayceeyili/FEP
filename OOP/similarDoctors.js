@@ -17,12 +17,12 @@ class Doctor {
     this.specialty = specialty;
     this.area = area;
     this.review = review;
-    this.prev = {
-      S: null,
-      A: null,
-      R: null,
-      SA: null
-    };
+    // this.prev = {
+    //   S: null,
+    //   A: null,
+    //   R: null,
+    //   SA: null
+    // };
     this.next = {
       S: null,
       A: null,
@@ -41,21 +41,32 @@ class DoctorList {
       R: null,
       SA: null
     };
-    this.tail = {
-      S: null,
-      A: null,
-      R: null,
-      SA: null
-    }
+    // this.tail = {
+    //   S: null,
+    //   A: null,
+    //   R: null,
+    //   SA: null
+    // }
   }
 
   isEmpty() {
-    return !this.head.S && !this.tail.S;
+    // return !this.head.S && !this.tail.S;
+    return !this.head.S;
   }
 
   add(name, specialty, area, review) {
-    let doctor = new Doctor(name, specialty, area, review);
+    let node = new Doctor(name, specialty, area, review);
+    if (this.isEmpty()) {
+      this.head.S = this.head.A = this.head.R = this.head.SA = node;
+      this.tail.S = this.tail.A = this.tail.R = this.tail.SA = node;
+    } else {
+      let foundS = false;
+      let foundA = false;
+      let foundR = false;
+      let foundSA = false;
 
+      let curr
+    }
   }
 }
 
