@@ -58,17 +58,45 @@ class DoctorList {
     let node = new Doctor(name, specialty, area, review);
     if (this.isEmpty()) {
       this.head.S = this.head.A = this.head.R = this.head.SA = node;
-      this.tail.S = this.tail.A = this.tail.R = this.tail.SA = node;
+      // this.tail.S = this.tail.A = this.tail.R = this.tail.SA = node;
     } else {
-      let foundS = false;
-      let foundA = false;
-      let foundR = false;
-      let foundSA = false;
+      // let foundS = false;
+      // let foundA = false;
+      // let foundR = false;
+      // let foundSA = false;
+      //
+      let currS = this.head.S;
+      let currA = this.head.A;
+      let currR = this.head.R;
+      let currSA = this.head.SA;
 
-      let curr
+      while (currR.R) {
+        if (currS.S === node.S && (currR.R < node.R && (!currR.next.R || currR.next.R >= node.R))) {
+          node.next.S = currS.next.S;
+          currS.next.S = node;
+        }
+
+        currS = currS.next.S;
+        currA = currA.next.A;
+        currR = currR.next.R;
+        currSA = currSA.next.SA;
+      }
     }
+  }
+
+  sorted(arg) {
+    let result = [];
+    let curr = this.head[arg];
+    while (curr) {
+      result.push(curr);
+      curr = curr.next[arg];
+    }
+
+    return result;
   }
 }
 
 let list = new DoctorList();
-console.log(list.isEmpty());
+list.add('li', 'handsome', 'ca', 5);
+list.add('han', 'handsome', 'ca', 6)
+console.log(list.sorted('R'));
