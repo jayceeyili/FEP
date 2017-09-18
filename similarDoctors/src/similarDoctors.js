@@ -81,16 +81,3 @@ class DoctorList {
     }
   }
 }
-
-let list = new DoctorList();
-let ni = new Doctor('ni', 'hand', 'ca', 4);
-let wo = new Doctor('wo', 'eye', 'ca', 5);
-let ta = new Doctor('lala', 'foot', 'ca', 7);
-let lala = new Doctor('shei', 'hand', 'ca', 2);
-let shei = new Doctor('ta', 'foot', 'ca', 3);
-list.add(ni);
-list.add(wo)
-list.add(ta)
-list.add(lala);
-list.add(shei)
-console.log(list.findSimilar(ni));
