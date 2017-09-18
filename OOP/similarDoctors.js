@@ -9,8 +9,7 @@
   thoughts or things you would want to improve on with more time.
 ***************************************************************************************************/
 
-// Probably, a linked list is a good choice
-// Define the Doctor class first
+// Define the Doctor class
 class Doctor {
   constructor(name, specialty, area, rate) {
     this.name = name;
@@ -21,55 +20,73 @@ class Doctor {
   }
 }
 
-// Define the DoctorList class
+// Define the DoctorList class, which is a Linek List
 class DoctorList {
   constructor() {
     this.head = null;
   }
 
-  add(name, specialty, area, rate) {
-    let node = new Doctor(name, specialty, area, rate);
-
+  add(doctor) {
     let head = this.head;
     let current = head;
     let prev;
 
-    if (!head || rate >= this.head.rate) {
-      node.next = head;
-      this.head = node;
+    if (!head || doctor.rate >= this.head.rate) {
+      doctor.next = head;
+      this.head = doctor;
       return this;
     }
 
     while (current) {
-      if (current.rate < rate) {
-        node.next = current;
-        prev.next = node;
+      if (current.rate < doctor.rate) {
+        doctor.next = current;
+        prev.next = doctor;
         return this;
       }
       prev = current;
       current = current.next;
     }
 
-    prev.next = node;
+    prev.next = doctor;
     return this;
   }
 
-  sorted(arg) {
+  sorted(cb) {
     let result = [];
     let curr = this.head;
     while (curr) {
-      result.push(curr.rate);
+      if (cb(curr)) {
+        result.push(curr);
+      }
       curr = curr.next;
     }
 
     return result;
   }
+
+  findSimilar(doctor, option) {
+    switch (option) {
+      case 'S':
+        return this.sorted(ele => ele.specialty === doctor.specialty);
+      case 'A':
+        return this.sorted(ele => ele.area === doctor.area);
+      case 'S&A':
+        return this.sorted(ele => ele.area === doctor.area && ele.specialty === doctor.specialty);
+      default:
+        return this.sorted(ele => ele);
+    }
+  }
 }
 
 let list = new DoctorList();
-list.add('ni', 'hand', 'ca', 4);
-list.add('wo', 'eye', 'ca', 5)
-list.add('lala', 'foot', 'ca', 7)
-list.add('shei', 'hand', 'ca', 2);
-list.add('ta', 'foot', 'ca', 3)
-console.log(list.sorted('S'));
+let ni = new Doctor('ni', 'hand', 'ca', 4);
+let wo = new Doctor('wo', 'eye', 'ca', 5);
+let ta = new Doctor('lala', 'foot', 'ca', 7);
+let lala = new Doctor('shei', 'hand', 'ca', 2);
+let shei = new Doctor('ta', 'foot', 'ca', 3);
+list.add(ni);
+list.add(wo)
+list.add(ta)
+list.add(lala);
+list.add(shei)
+console.log(list.findSimilar(ni));
