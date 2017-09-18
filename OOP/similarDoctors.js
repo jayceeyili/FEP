@@ -9,7 +9,7 @@
   thoughts or things you would want to improve on with more time.
 ***************************************************************************************************/
 
-// Probably, a multi-handle doubly linked list is a good choice
+// Probably, a linked list is a good choice
 // Define the Doctor class first
 class Doctor {
   constructor(name, specialty, area, rate) {
@@ -17,86 +17,49 @@ class Doctor {
     this.specialty = specialty;
     this.area = area;
     this.rate = rate;
-    this.next = {
-      S: null,
-      A: null,
-      R: null,
-      SA: null
-    }
+    this.next = null;
   }
 }
 
 // Define the DoctorList class
 class DoctorList {
   constructor() {
-    this.head = {
-      S: null,
-      A: null,
-      R: null,
-      SA: null
-    };
-  }
-
-  isEmpty() {
-    return !this.head.R;
+    this.head = null;
   }
 
   add(name, specialty, area, rate) {
     let node = new Doctor(name, specialty, area, rate);
 
-    if (this.isEmpty()) {
-      this.head.S = node;
-      this.head.A = node;
-      this.head.R = node;
-      this.head.SA = node;
-    } else {
+    let head = this.head;
+    let current = head;
+    let prev;
 
-      if (this.head.S.specialty === node.specialty && node.rate >= this.head.S.rate) {
-        node.next.S = this.head.S;
-        this.head.S = node;
-      }
-
-      let currS = this.head.S;
-      let currA = this.head.A;
-      let currR = this.head.R;
-      let currSA = this.head.SA;
-
-
-      while (currR) {
-        // if (currS.specialty === node.specialty && currS.rate > node.rate) {
-        //   node.next.S = currS.next.S;
-        //   currS.next.S = node;
-        // }
-        if (currS.specialty === node.specialty) {
-          if (currS.rate > node.rate) {
-            // if (currS.next.S) {
-            // if (!currS.next.S || currS.next.S.rate <= node.rate) {
-              // node.next.S = currS.next.S;
-              // currS.next.S = node;
-              console.log('this is current S: ' + currS.name);
-            // }
-          }
-        }
-
-        // if (currR.rate > node.rate && (!currR.next.rate || currR.next.rate <= node.rate)) {
-        //   node.next.R = currR.next.R;
-        //   currR.next.R = node;
-        // }
-
-        currS = currS.next.S;
-        currA = currA.next.A;
-        currR = currR.next.R;
-        currSA = currSA.next.SA;
-      }
+    if (!head || rate >= this.head.rate) {
+      node.next = head;
+      this.head = node;
+      return this;
     }
+
+    while (current) {
+      if (current.rate < rate) {
+        node.next = current;
+        prev.next = node;
+        return this;
+      }
+      prev = current;
+      current = current.next;
+    }
+
+    prev.next = node;
+    return this;
   }
 
   sorted(arg) {
     let result = [];
-    let curr = this.head[arg];
+    let curr = this.head;
     while (curr) {
-      result.push(curr);
-      curr = curr.next[arg];
+      result.push(curr.rate);
+      curr = curr.next;
     }
 
     return result;
@@ -104,7 +67,9 @@ class DoctorList {
 }
 
 let list = new DoctorList();
-list.add('ni', 'handsome', 'ca', 4);
-list.add('wo', 'handsome', 'ca', 5)
-list.add('ta', 'handsome', 'ca', 3)
+list.add('ni', 'hand', 'ca', 4);
+list.add('wo', 'eye', 'ca', 5)
+list.add('lala', 'foot', 'ca', 7)
+list.add('shei', 'hand', 'ca', 2);
+list.add('ta', 'foot', 'ca', 3)
 console.log(list.sorted('S'));
