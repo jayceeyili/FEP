@@ -31,6 +31,7 @@ class DoctorList {
     let current = head;
     let prev;
 
+    // if empty or the given doctor rate is higher than the head, unshift
     if (!head || doctor.rate >= this.head.rate) {
       doctor.next = head;
       this.head = doctor;
@@ -38,6 +39,7 @@ class DoctorList {
     }
 
     while (current) {
+      // insert into the LL, in order
       if (current.rate < doctor.rate) {
         doctor.next = current;
         prev.next = doctor;
@@ -51,6 +53,8 @@ class DoctorList {
     return this;
   }
 
+  // pass a callback in to get the list of similar doctors
+  // all doctors have been sorted by review score(descending)
   sorted(cb) {
     let result = [];
     let curr = this.head;
@@ -66,13 +70,13 @@ class DoctorList {
 
   findSimilar(doctor, option) {
     switch (option) {
-      case 'S':
+      case 'S': // 'specialty' match only
         return this.sorted(ele => ele.specialty === doctor.specialty);
-      case 'A':
+      case 'A': // 'area' match only
         return this.sorted(ele => ele.area === doctor.area);
-      case 'S&A':
+      case 'S&A': // 'specialty & area' match
         return this.sorted(ele => ele.area === doctor.area && ele.specialty === doctor.specialty);
-      default:
+      default: // return all doctor in order(rate) as default
         return this.sorted(ele => ele);
     }
   }
