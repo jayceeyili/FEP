@@ -19,12 +19,12 @@ const fizzBuzz_p2 = (start, end) => {
 // fizzBuzz_p2(1, 100);
 
 // c) Reverse a string
-// const reverse = (string, str = string.split('')) => {
-//   for (let i = 0; i <= Math.floor(str.length / 2); i++) {
-//     [str[i], str[str.length - 1 - i]] = [str[str.length - 1 - i], str[i]];
-//   }
-//   return str.join('');
-// };
+const reverse = (string, str = string.split('')) => {
+  for (let i = 0; i <= Math.floor(str.length / 2); i++) {
+    [str[i], str[str.length - 1 - i]] = [str[str.length - 1 - i], str[i]];
+  }
+  return str.join('');
+};
 // console.log(reverse('hello'));
 // d) write a function to increment version # string in the format of <major>>.<minor>.<feature>.<patch> with version as input in STRING…
 //
