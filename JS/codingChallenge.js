@@ -26,7 +26,10 @@ const reverse = (string, str = string.split('')) => {
   return str.join('');
 };
 // console.log(reverse('hello'));
+
 // d) write a function to increment version # string in the format of <major>>.<minor>.<feature>.<patch> with version as input in STRING…
+
+
 //
 // What can you bring to our scrappy culture
 // Describe a time you had to convince others to adopt your idea.
