@@ -29,6 +29,18 @@ const reverse = (string, str = string.split('')) => {
 
 // d) write a function to increment version # string in the format of <major>>.<minor>.<feature>.<patch> with version as input in STRING…
 
+const upgrade = version => {
+  // let [major, minor, feature, patch] = version.split('.');
+  let v = version.split('.');
+
+  // for (let i = 3; i >= 0; i--) {
+  //   if (v[i] < ) {
+  //
+  //   }
+  // }
+  console.log([major, minor, feature, patch]);
+};
+upgrade('1.4.65.2')
 
 //
 // What can you bring to our scrappy culture
