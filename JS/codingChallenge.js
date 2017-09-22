@@ -27,18 +27,15 @@ const reverse = (string, str = string.split('')) => {
 };
 // console.log(reverse('hello'));
 
-// d) write a function to increment version # string in the format of <major>>.<minor>.<feature>.<patch> with version as input in STRING…
-
+// write a function to increment version # string in the format of <major>>.<minor>.<feature>.<patch>
+// with version as input in STRING and index (0-major, 1 - minor, 2 - feature, etc)
+// to update as parameters. restart subsequent version to zero. i.e.
+// if increment <minor>, zero or restart <feature> & <patch> version.
 const upgrade = version => {
   // let [major, minor, feature, patch] = version.split('.');
   let v = version.split('.');
 
-  // for (let i = 3; i >= 0; i--) {
-  //   if (v[i] < ) {
-  //
-  //   }
-  // }
-  console.log([major, minor, feature, patch]);
+
 };
 upgrade('1.4.65.2')
 
