@@ -48,10 +48,10 @@ const upgrade = (version, index) => {
       patch = parseInt(patch) + 1;
       return [major, minor, feature, patch].join('.');
     default:
-      return;
+      return version;
   }
 };
-console.log(upgrade('1.4.65.2', 0));
+console.log(upgrade('1.4.65.2', 1));
 
 //
 // What can you bring to our scrappy culture
