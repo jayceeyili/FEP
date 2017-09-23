@@ -31,13 +31,27 @@ const reverse = (string, str = string.split('')) => {
 // with version as input in STRING and index (0-major, 1 - minor, 2 - feature, etc)
 // to update as parameters. restart subsequent version to zero. i.e.
 // if increment <minor>, zero or restart <feature> & <patch> version.
-const upgrade = version => {
-  // let [major, minor, feature, patch] = version.split('.');
-  let v = version.split('.');
+const upgrade = (version, index) => {
+  let [major, minor, feature, patch] = version.split('.');
 
-
+  switch (index) {
+    case 0:
+      major = parseInt(major) + 1;
+      return [major, '0', '0', '0'].join('.');
+    case 1:
+      minor = parseInt(minor) + 1;
+      return [major, minor, '0', '0'].join('.');
+    case 2:
+      feature = parseInt(feature) + 1;
+      return [major, minor, feature, '0'].join('.');
+    case 3:
+      patch = parseInt(patch) + 1;
+      return [major, minor, feature, patch].join('.');
+    default:
+      return;
+  }
 };
-upgrade('1.4.65.2')
+console.log(upgrade('1.4.65.2', 0));
 
 //
 // What can you bring to our scrappy culture
