@@ -53,9 +53,4 @@ const upgrade = (version, index) => {
 };
 console.log(upgrade('1.4.65.2', 1));
 
-//
-// What can you bring to our scrappy culture
-// Describe a time you had to convince others to adopt your idea.
-//
-//
 // I was asked about <dd>, <dl> and <dt> tags which were something that had dropped out of my brain a while back.
