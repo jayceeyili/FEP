@@ -17,11 +17,27 @@ const matchTarget = (array, target) => {
   //
   // return false;
 
-  
+  let start = 0;
+  let end = 0;
+  let sum = 0;
+
+  while (start < array.length && end < array.length) {
+    if (sum === target) {
+      return true;
+    } else if (sum > target) {
+      sum -= array[start];
+      start++;
+    } else if (end < array.length) {
+      sum += array[end];
+      end++;
+    }
+  }
+
+  return sum === target;
 }
 
 let a = [1, 11, 2, 4, 5, 7];
-let t = 30;
+let t = 12;
 console.log(matchTarget(a, t));
 
 /***************************************************************************************************
